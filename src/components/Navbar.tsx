@@ -1,5 +1,6 @@
 "use client";
 
+import { ModeToggle } from "@/components/ModeToggle"; // Import the ModeToggle component
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -10,39 +11,45 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/10 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+          {/* Logo Section */}
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <span className="text-white text-lg font-semibold">Logo</span>
             </div>
           </div>
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              <a
-                href="#"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Home
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Features
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Pricing
-              </a>
-              <a
-                href="#"
-                className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Contact
-              </a>
-            </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-4">
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Home
+            </a>
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Features
+            </a>
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Pricing
+            </a>
+            <a
+              href="#"
+              className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >
+              Contact
+            </a>
+
+            {/* Add Mode Toggle Button to Navbar */}
+            <ModeToggle />
           </div>
+
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -87,6 +94,7 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Mobile Menu Dropdown */}
       {isOpen && (
         <motion.div
           className="md:hidden"
@@ -119,6 +127,11 @@ const Navbar = () => {
             >
               Contact
             </a>
+
+            {/* Add Mode Toggle to Mobile Dropdown */}
+            <div className="pt-2">
+              <ModeToggle />
+            </div>
           </div>
         </motion.div>
       )}
